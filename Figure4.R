@@ -20,11 +20,11 @@ bar <- readOGR("data/Bohol_barangays/Bohol_barangays.shp",  layer="Bohol_baranga
 ### Create colours for choropleth map of bite incidience ###
 quantile(as.numeric(as.character(bar$inc2013)))
 breaks <- c(0,100,200,500,1000,2000,4000,max(as.numeric(as.character(bar$inc2013))))
-colours <- brewer.pal((length(breaks)-1), "Reds") 
+colours <- brewer.pal((length(breaks)-1), "Reds")
 colours <- c("white", colours[1:6])
 
 ### Draw bite incidence map ###
-pdf("Rysava_etal2018_Figure4a.pdf", width=5.5, height=4)
+pdf("figs/Rysava_etal2018_Figure4a.pdf", width=5.5, height=4)
 par(mar=c(0,0,0,0))
 plot(bar, col="grey90", border="grey50")
 plot(bar, add=T, border=NA, col=colours[findInterval(as.vector(as.character(bar$inc2013)),
@@ -48,11 +48,11 @@ text(666102, 1065824, "10 km", cex=0.5)
 dev.off()
 
 ### Draw bite incidence timeseries ###
-pdf("Rysava_etal2018_Figure4b.pdf", width=6.5, height=4)
+pdf("figs/Rysava_etal2018_Figure4b.pdf", width=6.5, height=4)
 par(mar=c(5,4,3,4.2))
 plot(1:12, exposures$exps, cex.axis=.7, type="o", col="grey20", ylim=c(0,500),
-     xlab="Time (months)", 
-     ylab="Number of dog-bite patients (line)", 
+     xlab="Time (months)",
+     ylab="Number of dog-bite patients (line)",
      cex.lab=.7, xaxt="n", bty="n", lwd=1)
 axis(1,at=seq(1,12,2), lab=c("Jan", "Mar", "May", "Jul", "Sep", "Nov"), tck=-0.04, cex.axis=.7)
 axis(1,at=1:12,lab=rep("",12),tck=-0.01)

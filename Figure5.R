@@ -12,10 +12,10 @@ animals <- read.csv("data/Animal_status.csv")
 
 ### Draw WHO category barcharts ###
 sum.cat <- table(WHOcat$category); sum.cat
-my.red <- colorRampPalette(c("white", "red"))(8) 
+my.red <- colorRampPalette(c("white", "red"))(8)
 my.red <- my.red[c(2,5,8)]
 
-pdf("Rysava_etal2018_Figure5a.pdf", width=6, height=4)
+pdf("figs/Rysava_etal2018_Figure5a.pdf", width=6, height=4)
 par(mar=c(4,5,3,2))
 mids <- barplot(sum.cat, ylab = "Number of exposures per WHO category",
                 ylim=c(0,3000), col=c("grey80", my.red), border=c("grey80", my.red), xaxt="n")
@@ -29,11 +29,11 @@ sum.cases <- sum.cases[names,]
 colnames(sum.cases) <- c("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec")
 sum.cases
 
-my.red <- colorRampPalette(c("white", "red"))(8) 
-my.blue <- brewer.pal(7, "Blues"); my.blue <- my.blue[2] 
+my.red <- colorRampPalette(c("white", "red"))(8)
+my.blue <- brewer.pal(7, "Blues"); my.blue <- my.blue[2]
 my.red <- my.red[c(3,4,6,8)]
 
-pdf("Rysava_etal2018_Figure5b.pdf", width=6, height=4)
+pdf("figs/Rysava_etal2018_Figure5b.pdf", width=6, height=4)
 par(mar=c(4.2,5,3,2))
 mids <- barplot(sum.cases, beside=F,xlab = "Time (months)",ylab = "Number of investigated dogs",
                 ylim=c(0,600),col=c(my.blue, my.red), border=c(my.blue, my.red))
@@ -45,7 +45,7 @@ my.blue <- brewer.pal(8, "Blues")
 my.red <- colorRampPalette(c("white", "red"))(8)
 my.col <- c(my.red[6], my.blue[6], my.blue[3])
 
-pdf("Rysava_etal2018_Figure5c.pdf", height=4, width=6)
+pdf("figs/Rysava_etal2018_Figure5c.pdf", height=4, width=6)
 barplot(`colnames<-`(t(costs[-1]), c("Scenario 1", "Scenario 2", "Scenario 3")), beside=TRUE,
         ylab="Total costs (USD)", cex.lab=.8, ylim=c(0, 80000), axes=F,
         legend.text = TRUE, col = my.col, border=NA, cex.names=.8, cex.axis=.8,

@@ -1,7 +1,7 @@
 ## Manuscript: On the path to rabies elimination: the need for risk assessments to improve administration of post-exposure prophylaxis
 ## Name: Kristyna Rysava
 ## Date: 12/06/18
-## Code: Figure 6 
+## Code: Figure 6
 
 rm(list=ls())
 
@@ -28,7 +28,7 @@ red.IC <- adjustcolor("red", alpha.f = 0.5)
 darkred.IC <- adjustcolor("darkred", alpha.f = 0.5)
 
 ### Draw vaccination coverage map ###
-pdf("Rysava_etal2018_Figure6.pdf", width=5.5, height=4)
+pdf("figs/Rysava_etal2018_Figure6.pdf", width=5.5, height=4)
 par(mar=c(0,0,0,0))
 plot(bar, col="grey90", border="grey50")
 plot(bar, add=T, border=NA, col=colours[findInterval(as.vector(as.character(bar@data$vacc_13)),
@@ -36,9 +36,9 @@ plot(bar, add=T, border=NA, col=colours[findInterval(as.vector(as.character(bar@
 plot(muni,add=T,border="grey60", lwd=.3) # municipalities
 
 # add cases
-plot(SpatialPoints(data.frame(confirmed[,7:8]), proj4string = CRS("+proj=utm +zone=51")), 
+plot(SpatialPoints(data.frame(confirmed[,7:8]), proj4string = CRS("+proj=utm +zone=51")),
      add=T, cex=1.5, pch=19, col=red.IC)
-plot(SpatialPoints(data.frame(probable[,7:8]), proj4string = CRS("+proj=utm +zone=51")), 
+plot(SpatialPoints(data.frame(probable[,7:8]), proj4string = CRS("+proj=utm +zone=51")),
      add=T, cex=1.5, pch=17, col=darkred.IC)
 
 # add legend to map
@@ -47,7 +47,7 @@ legend(565270, 1134140,
                 "Rabies positive cases","Rabies probable cases"),
        lty=c(rep(0,length(breaks)-1),1,0,0),
        col = c(rep("black",length(breaks)-1),"grey60","red", "darkred"),
-       pch=c(rep(22,length(breaks)-1),NA,19,17), 
+       pch=c(rep(22,length(breaks)-1),NA,19,17),
        pt.bg=c(colours,NA), pt.cex=0.7, lwd=c(rep(.2,7),.9),
        title=c("Vaccination coverage (%)"), text.width=.5,
        cex=0.5, bty="n")
